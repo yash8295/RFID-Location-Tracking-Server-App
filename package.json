@@ -1,13 +1,13 @@
 {
-  "name": "app",
+  "name": "Android App Server For RFID Project",
   "version": "1.0.0",
   "description": "RFID-Android-Server",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"start": "node index.js
-  }
-   "repository": {
+    "start": "node index.js"
+  },
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/yash8295/RFID-Location-Tracking-Server_App.git"
   },
