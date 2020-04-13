@@ -1,0 +1,25 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "RFID-Android-Server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yash",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "body-parser": "^1.19.0",
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "express-session": "^1.16.1",
+    "heroku": "^7.38.1",
+    "mongodb": "^3.5.5",
+    "mongoose": "^5.9.7",
+    "nodemailer": "^6.4.6"
+  },
+  "devDependencies": {
+    "https-localhost": "^4.4.1"
+  }
+}
