@@ -346,8 +346,10 @@ app.post('/logout',function(req,res){
 app.post('/verifyOtp',function(req,res){
 	
 	var body=req.body;
-	var email=req.session.email;
+	var email=req.session.userEmail;
 	var otp=body.otp;
+	
+	console.log(email,otp);
 	
 	otpdetails.find({email:email,otp:otp})
 	.exec(function(err,data){
