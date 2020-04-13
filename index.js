@@ -278,6 +278,8 @@ app.post('/loginUser',(req,res,next)=>{
 				req.session.userName=updata[0].name;
 				req.session.userEmail=email;
 				
+				console.log(req.session);
+				
 				if(updata[0].verifiedOTP=='0')
 				{
 					res.json('Verify Your OTP')
@@ -344,6 +346,8 @@ app.post('/logout',function(req,res){
 //--------------------Check OTP---------------------
 
 app.post('/verifyOtp',function(req,res){
+	
+	console.log(req.session);
 	
 	var body=req.body;
 	var email=req.session.userEmail;
