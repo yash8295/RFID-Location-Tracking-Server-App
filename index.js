@@ -179,6 +179,80 @@ var userdetails = mongoose.model('userDetails',userSchema,'usersdetails');
 var otpdetails = mongoose.model('otpDetails',otpSchema,'otpdetails');
 var schooldetails = mongoose.model('schoolDetails',schoolSchema,'schooldetails');
 var studentdetails = mongoose.model('studentDetails',studentSchema,'studentdetails');
+
+//----------------------App--------------------------//
+//----------------------Register---------------------//
+
+app.post('/registerUser',(req,res,next)=>{
+			
+		var data = req.body;
+		var plain_password = data.password;
+		var hash_data = saltHashPassword(plain_password);
+		var password = hash_data.passwordHash;
+		var salt = hash_data.salt;
+		
+		var name = data.name;
+		var email = data.email;
+		
+		var insertJSON = {
+				'email':email,
+				'password':password,
+				'salt':salt,
+				'name':name
+		}
+		
+		userdetails.find({'email':email}).count(function(err,number){
+			if(err)
+				console.log(err);
+			else if(number!=0)
+			{
+				res.json('Email already exists');
+				console.log('Email already exists');
+			}
+			else
+			{
+				
+				var toReturn;
+				
+				var newUserDetails=new userdetails({
+					name:name,
+					email:email,
+					salt:salt,
+					password:password,
+					verifiedOTP : '0'
+				});
+				
+				newUserDetails.save()
+				.then(savedData =>{
+					toReturn+='Registration Successful';
+				})
+				
+				/*userdetails
+				.insert(insertJSON,function(err,data){
+						res.json('Registration Successful');
+						console.log('Registration Successful');
+				})*/
+				var otp = 0; 
+				var otp=sendNewUserMail(data.email,data.name);
+				
+					var newOtpDetails=new otpdetails({
+						email:email,
+						otp:otp,
+					});
+					newOtpDetails.save()
+					.then(savedData=>{
+						toReturn+='\nOtp Saved';
+					})
+					res.json('Registration Successful');
+					console.log('Registration Successful');
+			}
+		})
+		
+	});
+//-------------------------------------------//
+	
+//----------------------Login---------------------//		
+
 	
 app.post('/loginUser',(req,res,next)=>{
 	
