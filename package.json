@@ -1,5 +1,5 @@
 {
-  "name": "Android_App_Server_For_RFID_Project",
+  "name": "app",
   "version": "1.0.0",
   "description": "RFID-Android-Server",
   "main": "index.js",
