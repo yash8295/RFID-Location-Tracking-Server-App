@@ -278,7 +278,7 @@ app.post('/loginUser',(req,res,next)=>{
 				req.session.userName=updata[0].name;
 				req.session.userEmail=email;
 				
-				if(data[0].verifiedOTP=='0')
+				if(updata[0].verifiedOTP=='0')
 				{
 					res.json('Verify Your OTP')
 				}
@@ -389,3 +389,5 @@ app.post('/verifyOtp',function(req,res){
 	})
 	
 });
+
+app.listen(process.env.PORT || port,()=>{console.log("Listening on port "+port);});
