@@ -170,7 +170,7 @@ var studentSchema = Schema({
 	
 });
 
-var userdetails = mongoose.model('userDetails',userSchema,'usersdetails');
+var userdetails = mongoose.model('userDetails',userSchema,'userdetails');
 var otpdetails = mongoose.model('otpDetails',otpSchema,'otpdetails');
 var schooldetails = mongoose.model('schoolDetails',schoolSchema,'schooldetails');
 var studentdetails = mongoose.model('studentDetails',studentSchema,'studentdetails');
