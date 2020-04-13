@@ -283,10 +283,15 @@ app.post('/loginUser',(req,res,next)=>{
 				req.session.userName=updata[0].name;
 				req.session.userEmail=email;
 				
-				
-				
-				res.json('Login Successful');
-				console.log('Login Successful');
+				if(data[0].verifiedOTP=='0')
+				{
+					res.json('Verify Your OTP')
+				}
+				else
+				{	
+					res.json('Login Successful');
+					console.log('Login Successful');
+				}
 			}
 			else
 			{
